@@ -244,17 +244,17 @@ namespace MoreFlags
             instance.transform.parent = gameObject.transform;
             clone.GetComponent<Renderer>().material.mainTexture = modification.texture;
             clone.GetComponent<Renderer>().material.name = $"{prop.GetComponent<Renderer>().material.name}_{modification.id}";
-//            clone.m_lodObject = Object.Instantiate(prop.m_lodObject);
-//            clone.m_lodObject.transform.parent = instance.transform;
-//            clone.m_lodObject.name = prop.m_lodObject.name + $"_{modification.id}";
-//            var renderer = clone.m_lodObject.GetComponent<MeshRenderer>();
-//            Object.DestroyImmediate(renderer);
-//            renderer = clone.m_lodObject.AddComponent<MeshRenderer>();
-//            renderer.material= new Material(prop.m_lodObject.GetComponent<Renderer>().sharedMaterial)
-//            {
-//                mainTexture = modification.textureLod,
-//                name = $"{prop.m_lodObject.GetComponent<Renderer>().sharedMaterial.name}_{modification.id}"
-//            };
+            clone.m_lodObject = Object.Instantiate(prop.m_lodObject);
+            clone.m_lodObject.transform.parent = instance.transform;
+            clone.m_lodObject.name = prop.m_lodObject.name + $"_{modification.id}";
+            var renderer = clone.m_lodObject.GetComponent<MeshRenderer>();
+            Object.DestroyImmediate(renderer);
+            renderer = clone.m_lodObject.AddComponent<MeshRenderer>();
+            renderer.material= new Material(prop.m_lodObject.GetComponent<Renderer>().sharedMaterial)
+            {
+                mainTexture = modification.textureLod,
+                name = $"{prop.m_lodObject.GetComponent<Renderer>().sharedMaterial.name}_{modification.id}"
+            };
             clone.m_placementStyle = ItemClass.Placement.Manual;
             clone.m_createRuining = false;
             clone.m_Atlas = Atlas;
